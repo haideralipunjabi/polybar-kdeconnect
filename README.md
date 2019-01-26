@@ -24,3 +24,6 @@ In [`polybar-kdeconnect.config`](polybar-kdeconnect.config), set the `device` va
 
 ## Customization
 You can change the variables in [`polybar-kdeconnect.config`](polybar-kdeconnect.config) to customize the [rofi](https://github.com/DaveDavenport/rofi) menu and the icons shown in [polybar](https://github.com/jaagr/polybar)
+
+## Multiple Devices
+The only way to have multiple devices is to have seperate scripts, and seperate module entries in polybar config
