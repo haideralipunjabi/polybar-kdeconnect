@@ -12,7 +12,7 @@ Demo with [Material Theme](https://github.com/DaveDavenport/rofi-themes/blob/mas
 * [Zenity](https://github.com/GNOME/zenity)
 
 ## Usage
-Place the given files together in some folder, and use it in your polybar `config` as
+Place the given script in some folder, and use it in your polybar `config` as
 ```  
 [module/kdeconnect]  
 type = custom/script  
