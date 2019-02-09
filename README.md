@@ -23,6 +23,18 @@ tail = true
 ## Customization
 You can change the variables in [`polybar-kdeconnect.sh`](polybar-kdeconnect.sh) to customize the [rofi](https://github.com/DaveDavenport/rofi) menu and the icons shown in [polybar](https://github.com/jaagr/polybar)
 
+## Default Color Code Legend
+Color | Meaning |
+---|---|
+![Disconnected](https://via.placeholder.com/16.png/000000/000000) | Device Disconnected |
+![New Device](https://via.placeholder.com/16.png/FFFF00/FFFF00) | Unpaired Device |
+![Baterry_90](https://via.placeholder.com/16.png/FFFFFF/FFFFFF) | Battery >= 90 |
+![Baterry_80](https://via.placeholder.com/16.png/CCCCCC/CCCCCC) | Battery >= 80 |
+![Baterry_70](https://via.placeholder.com/16.png/AAAAAA/AAAAAA) | Battery >= 70 |
+![Baterry_60](https://via.placeholder.com/16.png/888888/888888) | Battery >= 60 |
+![Baterry_50](https://via.placeholder.com/16.png/666666/666666) | Battery >= 50 |
+![Baterry_LOW](https://via.placeholder.com/16.png/FF0000/FF0000) | Battery < 50 |
+
 
 ## Changelog
 ### v2
