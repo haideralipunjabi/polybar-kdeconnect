@@ -67,7 +67,7 @@ show_menu () {
 }
 
 show_pmenu () {
-    menu="$(rofi -sep "|" -dmenu -i -p "$1" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 4 <<< "Pair Device")"
+    menu="$(rofi -sep "|" -dmenu -i -p "$1" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 1 <<< "Pair Device")"
                 case "$menu" in
                     *'Pair Device') qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2 org.kde.kdeconnect.device.requestPair
                 esac

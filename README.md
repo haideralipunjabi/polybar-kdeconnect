@@ -2,6 +2,9 @@
 
 [KDEConnect](https://github.com/KDE/kdeconnect-kde) module for [Polybar](https://github.com/jaagr/polybar)
 
+![menu](menu.gif)
+![pmenu](pmenu.gif)
+![pmenu2](pmenu2.gif)
 ![screenshot](screenshot.png)  
 Demo with [Material Theme](https://github.com/DaveDavenport/rofi-themes/blob/master/User%20Themes/material.rasi) and [Material Polybar](https://github.com/adi1090x/polybar-themes)
 
