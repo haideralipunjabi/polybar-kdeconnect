@@ -16,7 +16,7 @@ Place the given files together in some folder, and use it in your polybar `confi
 ```  
 [module/kdeconnect]  
 type = custom/script  
-exec = /path/to/files/polybar-kdeconnect.sh  
+exec = ". /path/to/files/polybar-kdeconnect.sh; show_devices"  
 tail = true
 ````
 
