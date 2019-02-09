@@ -9,21 +9,25 @@ Demo with [Material Theme](https://github.com/DaveDavenport/rofi-themes/blob/mas
 * [rofi](https://github.com/DaveDavenport/rofi)
 * [kdeconnect](https://github.com/KDE/kdeconnect-kde)
 * Iosevka Nerd Font
+* [Zenity](https://github.com/GNOME/zenity)
 
 ## Usage
 Place the given files together in some folder, and use it in your polybar `config` as
 ```  
 [module/kdeconnect]  
 type = custom/script  
-exec = /path/to/files/polybar-kdeconnect.sh 
-click-left = /path/to/files/polybar-kdeconnect-menu.sh 
+exec = /path/to/files/polybar-kdeconnect.sh  
 tail = true
 ````
 
-In [`polybar-kdeconnect.config`](polybar-kdeconnect.config), set the `device` variable to your device id (Use `kdeconnect-cli -a`)
-
 ## Customization
-You can change the variables in [`polybar-kdeconnect.config`](polybar-kdeconnect.config) to customize the [rofi](https://github.com/DaveDavenport/rofi) menu and the icons shown in [polybar](https://github.com/jaagr/polybar)
+You can change the variables in [`polybar-kdeconnect.sh`](polybar-kdeconnect.sh) to customize the [rofi](https://github.com/DaveDavenport/rofi) menu and the icons shown in [polybar](https://github.com/jaagr/polybar)
 
-## Multiple Devices
-The only way to have multiple devices is to have seperate scripts, and seperate module entries in polybar config
+
+## Changelog
+### v2
+* Supports Multiple Devices without extra configuration
+* Supports pairing/unpairing devices
+* Removed `kdeconnect-cli` as dependency
+* Combined seperate files into one
+* Seperate icons for tablets and smartphone
