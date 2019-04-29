@@ -38,7 +38,7 @@ show_devices (){
         then
             battery="$(qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$deviceid org.kde.kdeconnect.device.battery.charge)"
             icon=$(get_icon $battery $devicetype)
-            devices+="%{A1:. $DIR/polybar-kdeconnect.sh; show_menu $devicename $deviceid $battery:}$icon%{A}$SEPERATOR"
+            devices+="%{A1:$DIR/polybar-kdeconnect.sh -n $devicename -i $deviceid -b $battery -m:}$icon%{A}$SEPERATOR"
         elif [ "$isreach" = "false" ] && [ "$istrust" = "true" ]
         then
             devices+="$(get_icon -1 $devicetype)$SEPERATOR"
@@ -49,7 +49,7 @@ show_devices (){
                 show_pmenu2 $devicename $deviceid
             fi
             icon=$(get_icon -2 $devicetype)
-            devices+="%{A1:. $DIR/polybar-kdeconnect.sh; show_pmenu $devicename $deviceid $:}$icon%{A}$SEPERATOR"
+            devices+="%{A1:$DIR/polybar-kdeconnect.sh -n $devicename -i $deviceid -p:}$icon%{A}$SEPERATOR"
 
         fi
     done
@@ -57,19 +57,19 @@ show_devices (){
 }
 
 show_menu () {
-    menu="$(rofi -sep "|" -dmenu -i -p "$1" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 4 -padding 20 -lines 5 <<< "Battery: $3%|Ping|Find Device|Send File|Unpair")"
+    menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 4 -padding 20 -lines 5 <<< "Battery: $DEV_BATTERY%|Ping|Find Device|Send File|Unpair")"
                 case "$menu" in
-                    *Ping) qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/ping org.kde.kdeconnect.device.ping.sendPing ;; 
-                    *'Find Device') qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/findmyphone org.kde.kdeconnect.device.findmyphone.ring ;;
-                    *'Send File') qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/share org.kde.kdeconnect.device.share.shareUrl "file://$(zenity --file-selection)" ;;
-                    *'Unpair' ) qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2 org.kde.kdeconnect.device.unpair
+                    *Ping) qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$DEV_ID/ping org.kde.kdeconnect.device.ping.sendPing ;; 
+                    *'Find Device') qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$DEV_ID/findmyphone org.kde.kdeconnect.device.findmyphone.ring ;;
+                    *'Send File') qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$DEV_ID/share org.kde.kdeconnect.device.share.shareUrl "file://$(zenity --file-selection)" ;;
+                    *'Unpair' ) qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$DEV_ID org.kde.kdeconnect.device.unpair
                 esac
 }
 
 show_pmenu () {
-    menu="$(rofi -sep "|" -dmenu -i -p "$1" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 4 <<< "Pair Device")"
+    menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 4 <<< "Pair Device")"
                 case "$menu" in
-                    *'Pair Device') qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2 org.kde.kdeconnect.device.requestPair
+                    *'Pair Device') qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$DEV_ID org.kde.kdeconnect.device.requestPair
                 esac
 }
 
@@ -101,3 +101,15 @@ get_icon () {
     echo $ICON
 }
 
+unset DEV_ID DEV_NAME DEV_BATTERY
+while getopts 'di:n:b:mp' c
+do
+    case $c in
+        d) show_devices ;;
+        i) DEV_ID=$OPTARG ;;
+        n) DEV_NAME=$OPTARG ;;
+        b) DEV_BATTERY=$OPTARG ;;
+        m) show_menu  ;;
+        p) show_pmenu ;;
+    esac
+done
