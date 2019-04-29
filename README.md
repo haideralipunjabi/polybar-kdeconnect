@@ -16,14 +16,13 @@ Demo with [Material Theme](https://github.com/DaveDavenport/rofi-themes/blob/mas
 * qt5tools
 
 ## Usage
-Place the given files together in some folder, and use it in your polybar `config` as
+Place the given script in some folder, and use it in your polybar `config` as
 ```  
 [module/kdeconnect]  
 type = custom/script  
-exec = ". /path/to/files/polybar-kdeconnect.sh; show_devices"  
+exec = "/path/to/files/polybar-kdeconnect.sh -d"  
 tail = true
 ````
-*Note: There is a space between `.` and `/path`*
 
 ## Customization
 You can change the variables in [`polybar-kdeconnect.sh`](polybar-kdeconnect.sh) to customize the [rofi](https://github.com/DaveDavenport/rofi) menu and the icons shown in [polybar](https://github.com/jaagr/polybar)
