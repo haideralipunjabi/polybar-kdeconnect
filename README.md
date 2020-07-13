@@ -13,7 +13,7 @@ Demo with [Material Theme](https://github.com/DaveDavenport/rofi-themes/blob/mas
 * [kdeconnect](https://github.com/KDE/kdeconnect-kde)
 * Iosevka Nerd Font
 * [Zenity](https://github.com/GNOME/zenity)
-* qt5tools
+* qbus-qt5 (or qt5tools on some distros)
 
 ## Usage
 Place the given script in some folder, and use it in your polybar `config` as
